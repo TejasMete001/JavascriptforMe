@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+</head>
+<body>
+   <h1>background changer</h1>
+   <button id="start">start</button>
+   <button id="stop">stop</button>
+
+</body>
+<script>
+   //generate a random color
+   const RandomClr=function(){
+      const hex="0123456789ABCDEF"
+      let=color='#'
+      
+      for(let i=0;i<6;i++){
+         color+= hex[Math.floor(Math.random() *16)];
+      }
+      return color;
+   }
+  // console.log(RandomClr());
+  let intervalId;
+  function changebgCLR(){
+   document.body.style.backgroundColor=RandomClr();
+  }
+const startChange=function(){
+     if(!intervalId){
+      intervalId =  setInterval(changebgCLR,1000)
+     }
+   //document.body.style.backgroundColor=RandomClr();
+
+}
+
+const stopChange=function(){
+clearInterval(intervalId)
+//just to dereferance the intervalId ,nothing much
+intervalId=null
+}
+
+  document.querySelector("#start").addEventListener('click',startChange);
+  document.querySelector("#stop").addEventListener('click',stopChange);
+
+</script>
+</html>
